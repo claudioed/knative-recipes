@@ -1,0 +1,12 @@
+config:
+  target: "http://35.222.220.194"
+  phases:
+    - duration: 10
+      arrivalRate: 100
+scenarios:
+  - flow:
+      - get:
+          url: "/message"
+          headers:
+            Host: "message.hello.example.com"
+            wait: 3000
