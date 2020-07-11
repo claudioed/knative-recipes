@@ -1,0 +1,20 @@
+apiVersion: serving.knative.dev/v1alpha1
+kind: Service
+metadata:
+  name: message
+spec:
+  template:
+    metadata:
+      name: message-v2
+    spec:
+      containers:
+        - image: claudioed/knative-message:v1
+          env:
+            - name: MESSAGE
+              value: v2
+          livenessProbe:
+            httpGet:
+              path: /health/live
+          readinessProbe:
+            httpGet:
+              path: /health/ready
